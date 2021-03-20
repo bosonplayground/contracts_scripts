@@ -1,3 +1,4 @@
+import { BosonRouter } from './contracts/BosonRouter';
 import { Web3Provider } from './web3/web3.provider';
 import { ApiServer } from './server';
 import { getMessage } from './message';
@@ -29,6 +30,12 @@ const main = async () => {
     const web3Provider = new Web3Provider(network)
 
     console.log(getMessage());
+
+    await web3Provider.contracts.voucherKernel.readOtherContracts();
+
+    await web3Provider.contracts.cashier.readOtherContracts();
+
+    //await web3Provider.contracts.bsnRouter.createOrder();
 
     const rootController = new RootController();
     const testController = new TestController();

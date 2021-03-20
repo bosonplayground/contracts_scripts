@@ -1,10 +1,20 @@
+import { Cashier } from './../contracts/Cashier';
+import { VoucherKernel } from './../contracts/VoucherKernel';
+import { BosonRouter } from './../contracts/BosonRouter';
 import { ContractInterface, ethers } from 'ethers';
+import { config } from '../config';
 
 export interface INetwork {
     name: string;
     chainId: number;
     nodeUrl: string;
     wssUrl: string;
+}
+
+export interface IContracts {
+    bsnRouter: BosonRouter;
+    voucherKernel: VoucherKernel;
+    cashier: Cashier;
 }
 
 function getBalanceAsNumber(
@@ -22,7 +32,7 @@ function getBalanceAsNumber(
 export class Web3Provider {
     private _provider: ethers.providers.JsonRpcProvider;
     private _wallet: ethers.Wallet;
-    private _contracts: {};
+    private _contracts: IContracts;
 
     public constructor(private _network: INetwork) {
         this._provider = new ethers.providers.StaticJsonRpcProvider(
@@ -50,12 +60,15 @@ export class Web3Provider {
         return this._wallet.address;
     }
 
-    public get contracts():  {} {
+    public get contracts(): IContracts {
         return this._contracts;
     }
 
-    private createContracts(): {} {
+    private createContracts(): IContracts {
         return {
+            bsnRouter: new BosonRouter(config().contracts['bsnRouter'][this.network.chainId], this._wallet),
+            voucherKernel: new VoucherKernel(config().contracts['voucherKernel'][this.network.chainId], this._wallet),
+            cashier: new Cashier(config().contracts['cashier'][this.network.chainId], this._wallet),
             // contract1: new Contract1(config().contracts['contract1'].addresses[this.network.chainId], this._wallet), // read-write
             // contract2: new Contract2(config().contracts['contract2'].addresses[this.network.chainId], this._provider), // read-only
         };

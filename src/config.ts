@@ -73,28 +73,28 @@ export const config = (): any => {
         },
         contracts: {
             erc1155721: {
-                4: 0x33F29C1e2F61Bb58226d79B4D8451509a899c06e,
-                1337: 0x1763E3C5c4Cbd73D505eD485ae9Df2d61B1b3234,
+                4: '0x33F29C1e2F61Bb58226d79B4D8451509a899c06e',
+                1337: '0x33E22Ca716aBE185f536a3fB06FCc948C3b292EB',
             },
             voucherKernel: {
-                4: 0xEfA361fD7cE0B1b409d23F119Fe6BA9e8c9328AF,
-                1337: 0xa1d917b9a0981e65B97e918b7F4D19E981559eeD,
+                4: '0xEfA361fD7cE0B1b409d23F119Fe6BA9e8c9328AF',
+                1337: '0x038fEf19fb3773f5653bd7Fb732E724C3E037C88',
             },
             cashier: {
-                4: 0x83a4BcdD650f67b7DbC92346B20e97fef660Ee20,
-                1337: 0xB8BFb9CC6B31E2354185Fd685C81aCD2a8c843ab,
+                4: '0x83a4BcdD650f67b7DbC92346B20e97fef660Ee20',
+                1337: '0xADaC0718975A44e08F89f759E8Aa4BD921e62b15',
             },
             bsnRouter: {
-                4: 0x4F5a26d7974EE27D8383EEa40FB0647897e680cE,
-                1337: 0x19aAc979dc50758176A659b041c9D7d0129bb6AA,
+                4: '0x4F5a26d7974EE27D8383EEa40FB0647897e680cE',
+                1337: '0xd94a89a00F83849E57b6E1c7Be4Bb4258Ac60A0d',
             },
             bsnTokenPrice: {
-                4: 0x200E5295fEC37B4410E6688a94de22C9d4C6DDbb,
-                1337: 0x684F621eFf28DEdBa7819280063653ff933f5CC0,
+                4: '0x200E5295fEC37B4410E6688a94de22C9d4C6DDbb',
+                1337: '0x684F621eFf28DEdBa7819280063653ff933f5CC0',
             },
             bsnTokenDeposit: {
-                4: 0x200E5295fEC37B4410E6688a94de22C9d4C6DDbb,
-                1337: 0x684F621eFf28DEdBa7819280063653ff933f5CC0,
+                4: '0x200E5295fEC37B4410E6688a94de22C9d4C6DDbb',
+                1337: '0x684F621eFf28DEdBa7819280063653ff933f5CC0',
             }
         },
     };
