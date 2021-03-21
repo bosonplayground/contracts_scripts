@@ -35,14 +35,14 @@ export class VoucherKernel extends Web3Contract {
         return this.contract.typeId();
     }
 
-    onLogVoucherDelivered(
+    onLogVoucherDelivered = (
         tokenIdSupply: ethers.BigNumber,
         tokenIdVoucher: ethers.BigNumber,
         issuer: string,
         holder: string,
         promiseId: string,
         correlationId: ethers.BigNumber
-    ) {
+    ) => {
         console.log('VoucherKernel.onLogVoucherDelivered', tokenIdSupply.toString(), tokenIdVoucher.toString(), promiseId);
         this.lastTokenIdVoucher = tokenIdVoucher;
     }

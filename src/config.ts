@@ -74,19 +74,19 @@ export const config = (): any => {
         contracts: {
             erc1155721: {
                 4: '0xe8FF7C12477130D63F2D516308F3134eb9489bB9',
-                1337: '0xE5b8149D8B32C0D4921C8e837D8f1fC385b87014',
+                1337: '0xeB232972c67390efbe822B487a862bff1EA8F9c3',
             },
             voucherKernel: {
                 4: '0xF129ee2eAEe0a60e0695DCB5231A03f6fdaB1Da2',
-                1337: '0x6E0671DC01fde6e3F6B8486e83f78aa20abC8ED5',
+                1337: '0x1A9305584B4b7dFfd0b035D8E6d5aDe693625d5E',
             },
             cashier: {
                 4: '0x0Eb9eaF145aD0e0974fA0A8960Fa7de950330B50',
-                1337: '0x6eF5F09dfA0fBCeA51822e39D5b570b4B81e8CA4',
+                1337: '0xa6dB613f2aEe291E2E701829b33D58e5467480b2',
             },
             bsnRouter: {
                 4: '0xDB3bF0Bee5c0DE37D6C65c61012aAfea2Ce469e1',
-                1337: '0x8A1C19BaBb343cac22dEe0Be3d9e0489e2E202Ee',
+                1337: '0x30d6883bd0c66bd3278eb4831321E901cbE02d65',
             },
             bsnTokenPrice: {
                 4: '0x200E5295fEC37B4410E6688a94de22C9d4C6DDbb',

@@ -29,13 +29,13 @@ export class BosonRouter extends Web3Contract {
         return receipt;
     }
 
-    onLogOrderCreated(
+    onLogOrderCreated = (
         tokenIdSupply: ethers.BigNumber,
         seller: string,
         quantity: ethers.BigNumber,
         paymentType: number,
         correlationId: ethers.BigNumber
-    ) {
+    ) => {
         console.log('BosonRouter.onLogOrderCreated', tokenIdSupply.toString(), seller);
         this.lastOrder = {id: tokenIdSupply, seller};
     }

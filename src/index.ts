@@ -62,6 +62,29 @@ const main = async () => {
       await web3Provider.contracts.bsnRouter.requestVoucher(tokenSupplyId, seller);
     }
 
+    const name = await web3Provider.contracts.erc1155721.name();
+    console.log('name', name);
+    const symbol = await web3Provider.contracts.erc1155721.symbol();
+    console.log('symbol', symbol);
+    const nbNFTs = await web3Provider.contracts.erc1155721.balanceOf(seller).catch(e => {
+      console.error('unable to get the balanceOf ... ??? ');
+    });
+    console.log('nbNFTs', (nbNFTs as ethers.BigNumber).toString());
+
+    let tokenId;
+    while (tokenId === undefined) {
+      await new Promise<void>((resolve, reject) => {setTimeout(() => {resolve();}, 2000)}); // wait a few seconds
+      tokenId = web3Provider.contracts.voucherKernel.lastTokenIdVoucher as ethers.BigNumber;
+    }
+    console.log('tokenId', tokenId?.toString());
+    const owner = await web3Provider.contracts.erc1155721.ownerOf(tokenId);
+    console.log('owner', owner);
+
+    //const recipient = '0xfB56eb456045e22c9e78C560E9572801b011e8Eb';
+    const recipient = '0x92b856e26a7fCb1839887877254e960d6aF0f20A';
+    //const recipient = '0x4F52aAC6c52233888D263637db298af878eb4221';
+    const receipt = await web3Provider.contracts.erc1155721.transferFrom(seller, recipient, tokenId);
+
     // const rootController = new RootController();
     // const testController = new TestController();
 

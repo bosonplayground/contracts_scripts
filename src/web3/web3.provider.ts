@@ -1,3 +1,4 @@
+import { ERC1155ERC721 } from './../contracts/ERC1155ERC721';
 import { Cashier } from './../contracts/Cashier';
 import { VoucherKernel } from './../contracts/VoucherKernel';
 import { BosonRouter } from './../contracts/BosonRouter';
@@ -15,6 +16,7 @@ export interface IContracts {
     bsnRouter: BosonRouter;
     voucherKernel: VoucherKernel;
     cashier: Cashier;
+    erc1155721: ERC1155ERC721;
 }
 
 function getBalanceAsNumber(
@@ -69,6 +71,7 @@ export class Web3Provider {
             bsnRouter: new BosonRouter(config().contracts['bsnRouter'][this.network.chainId], this._wallet),
             voucherKernel: new VoucherKernel(config().contracts['voucherKernel'][this.network.chainId], this._wallet),
             cashier: new Cashier(config().contracts['cashier'][this.network.chainId], this._wallet),
+            erc1155721: new ERC1155ERC721(config().contracts['erc1155721'][this.network.chainId], this._wallet),
             // contract1: new Contract1(config().contracts['contract1'].addresses[this.network.chainId], this._wallet), // read-write
             // contract2: new Contract2(config().contracts['contract2'].addresses[this.network.chainId], this._provider), // read-only
         };
