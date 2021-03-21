@@ -7,6 +7,7 @@ import { RootController } from './api.controllers/rootController';
 import { parse } from 'ts-command-line-args';
 import { exit } from 'process';
 import { config } from './config';
+import { ethers } from 'ethers';
 
 interface ICLArguments {
     network: string;
@@ -35,15 +36,39 @@ const main = async () => {
 
     await web3Provider.contracts.cashier.readOtherContracts();
 
-    //await web3Provider.contracts.bsnRouter.createOrder();
+    const nbOffers = await web3Provider.contracts.voucherKernel.typeId();
+    console.log('nbOffers', nbOffers.toString());
 
-    const rootController = new RootController();
-    const testController = new TestController();
+    if (nbOffers.eq(0)) {
+      await web3Provider.contracts.bsnRouter.createOrder();
+      const nbOffers2 = await web3Provider.contracts.voucherKernel.typeId();
+      console.log('nbOffers', nbOffers2.toString());
+    }
 
-    const server = new ApiServer([rootController, testController]);
-    server.start();
+    let tokenSupplyId;
+    for (let i = 0; i < nbOffers.toNumber(); i++) {
+      await web3Provider.contracts.voucherKernel.getPromiseKey(ethers.BigNumber.from(i)).catch((e) => {
+        console.error(e);
+      }).then(async (key) => {
+        console.log('key #' + i, key);
+        tokenSupplyId = await web3Provider.contracts.voucherKernel.getTokenSupplyIdFromPromise(key);
+        console.log('--> id:', tokenSupplyId.toString());
+      })
+    }
 
-    await new Promise<void>((resolve, reject) => {}); // wait indefinitely
+    const seller = await web3Provider.getCurrentAccount();
+
+    if (tokenSupplyId) {
+      await web3Provider.contracts.bsnRouter.requestVoucher(tokenSupplyId, seller);
+    }
+
+    // const rootController = new RootController();
+    // const testController = new TestController();
+
+    // const server = new ApiServer([rootController, testController]);
+    // server.start();
+
+    await new Promise<void>((resolve, reject) => {setTimeout(() => {resolve();}, 15000)}); // wait a few seconds
 }
 
 main().then(() => {

@@ -47,11 +47,11 @@ export const config = (): any => {
               portisId: 'unknown',
               wssUrl: 'ws://host.docker.internal:7545',
             },
-            goerli: {
-                chainId: 5,
-                name: 'goerli',
-                nodeUrl: `https://goerli.infura.io/v3/${process.env.INFURA_API_KEY}`,
-                wssUrl: `wss://goerli.infura.io/ws/v3/${process.env.INFURA_API_KEY}`,
+            rinkeby: {
+                chainId: 4,
+                name: 'rinkeby',
+                nodeUrl: `https://rinkeby.infura.io/v3/${process.env.INFURA_API_KEY}`,
+                wssUrl: `wss://rinkeby.infura.io/ws/v3/${process.env.INFURA_API_KEY}`,
             },
             matic: {
               chainId: 137,
@@ -73,20 +73,20 @@ export const config = (): any => {
         },
         contracts: {
             erc1155721: {
-                4: '0x33F29C1e2F61Bb58226d79B4D8451509a899c06e',
-                1337: '0x33E22Ca716aBE185f536a3fB06FCc948C3b292EB',
+                4: '0xe8FF7C12477130D63F2D516308F3134eb9489bB9',
+                1337: '0xE5b8149D8B32C0D4921C8e837D8f1fC385b87014',
             },
             voucherKernel: {
-                4: '0xEfA361fD7cE0B1b409d23F119Fe6BA9e8c9328AF',
-                1337: '0x038fEf19fb3773f5653bd7Fb732E724C3E037C88',
+                4: '0xF129ee2eAEe0a60e0695DCB5231A03f6fdaB1Da2',
+                1337: '0x6E0671DC01fde6e3F6B8486e83f78aa20abC8ED5',
             },
             cashier: {
-                4: '0x83a4BcdD650f67b7DbC92346B20e97fef660Ee20',
-                1337: '0xADaC0718975A44e08F89f759E8Aa4BD921e62b15',
+                4: '0x0Eb9eaF145aD0e0974fA0A8960Fa7de950330B50',
+                1337: '0x6eF5F09dfA0fBCeA51822e39D5b570b4B81e8CA4',
             },
             bsnRouter: {
-                4: '0x4F5a26d7974EE27D8383EEa40FB0647897e680cE',
-                1337: '0xd94a89a00F83849E57b6E1c7Be4Bb4258Ac60A0d',
+                4: '0xDB3bF0Bee5c0DE37D6C65c61012aAfea2Ce469e1',
+                1337: '0x8A1C19BaBb343cac22dEe0Be3d9e0489e2E202Ee',
             },
             bsnTokenPrice: {
                 4: '0x200E5295fEC37B4410E6688a94de22C9d4C6DDbb',
